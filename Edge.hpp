@@ -13,5 +13,4 @@ private:
     unsigned long weight;
 };
 
-
 #endif
