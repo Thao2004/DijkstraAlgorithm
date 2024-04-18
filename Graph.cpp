@@ -31,3 +31,33 @@ void Graph::printVertices() {
         std::cout << pair.first << std::endl;
     }
 }
+
+void Graph::addEdge(std::string label1, std::string label2, unsigned long weight) {
+    //check if both the vertices exist in the graph
+    if (vertices.find(label1) != vertices.end() && vertices.find(label2) != vertices.end()) {
+        //retrieve pointer to the vertex using the labels
+        Vertex *v1 = vertices[label1];
+        Vertex *v2 = vertices[label2];
+
+        //adding the edge between two vertices by calling the addEdge helper function of the Vertex class
+        //since this is an undirected graph, the edge is added from both sides
+        v1->addEdge(v2, weight);
+        v2->addEdge(v1, weight);
+    }
+}
+
+void Graph::printGraph() {
+    for (const auto& pair : vertices) {
+        //print the label of the current vertex
+        std::cout << "Vertex " << pair.first << " is connected to: ";
+        //get the edges of the current vertex
+        const auto& edges = pair.second->getEdges();
+
+        //iteratre over each edge of the current vertex
+        for (const auto& edge : edges) {
+            //print the label of the adjacent vertex and the weight
+            std::cout << "(" << edge.first->getLabel() << ", weight: " << edge.second << "), ";
+        }
+        std::cout << std::endl;
+    }
+}
