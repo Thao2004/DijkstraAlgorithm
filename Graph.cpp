@@ -74,3 +74,11 @@ void Graph::printGraph() {
     }
 }
 
+
+
+// Implement Dijkstra's Algorithm
+// Step 1: Create the map to keep track of the vertices included in the shortest path tree
+// Step 2: Initialize the source vertex distance = 0, other vertex to infinity
+// Step 3: Updating the distance values of the adjacent vertices. Pick the one with minimum distance value
+// Step 4: Mark the source vertex as visited. Move to the next vertex with the minimum distance value
+// Step 5: Redp step 3
