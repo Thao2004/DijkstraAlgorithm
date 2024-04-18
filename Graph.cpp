@@ -46,6 +46,18 @@ void Graph::addEdge(std::string label1, std::string label2, unsigned long weight
     }
 }
 
+void Graph::removeEdge(std::string label1, std::string label2) {
+    if (vertices.find(label1) != vertices.end() && vertices.find(label2) != vertices.end()) {
+        Vertex *v1 = vertices[label1];
+        Vertex *v2 = vertices[label2];
+
+        //using the helper function from Vertex class (removeEdge()) 
+        //remove edges between v1 and v2; vice versa
+        v1->removeEdge(v2);
+        v2->removeEdge(v1);
+    }
+}
+
 void Graph::printGraph() {
     for (const auto& pair : vertices) {
         //print the label of the current vertex
@@ -61,3 +73,4 @@ void Graph::printGraph() {
         std::cout << std::endl;
     }
 }
+
