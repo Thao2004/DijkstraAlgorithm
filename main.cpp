@@ -56,8 +56,14 @@ int main() {
     graph2.removeEdge("2", "6");
     graph2.printGraph();
     std::cout << std::endl;
-    
 
+    std::cout << "Testing shortest path algorithm" << std::endl;
+
+
+    std::vector<std::string> path;
+    unsigned long shortestDistance = graph2.shortestPath("1", "5", path);
+
+    graph2.printShortestPath(path, shortestDistance);
     
     return 0;
 }
