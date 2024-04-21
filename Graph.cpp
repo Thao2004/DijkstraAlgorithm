@@ -2,6 +2,14 @@
 #include <queue>
 #include <limits>
 
+// Destructor
+Graph::~Graph() {
+    for (auto& pair : vertices) {
+        delete pair.second;
+    }
+}
+
+// Add the vertex to the graph
 void Graph::addVertex(std::string label) {
     //check whether the label of the vertex already existed
     if (vertices.find(label) == vertices.end()) {
@@ -9,6 +17,7 @@ void Graph::addVertex(std::string label) {
     }
 }
 
+// Remove the vertex from the graph
 void Graph::removeVertex(std::string label) {
     //return an iterator to the vertex with the matching label
     auto iterator = vertices.find(label);
@@ -27,6 +36,7 @@ void Graph::removeVertex(std::string label) {
     }
 }
 
+// Print all the vertices in the graph
 void Graph::printVertices() {
     std::cout << "Vertices in the graph: " << std::endl;
     for (const auto& pair : vertices) {
@@ -34,6 +44,7 @@ void Graph::printVertices() {
     }
 }
 
+// Function to add an edge between two vertices
 void Graph::addEdge(std::string label1, std::string label2, unsigned long weight) {
     //check if both the vertices exist in the graph
     if (vertices.find(label1) != vertices.end() && vertices.find(label2) != vertices.end()) {
@@ -48,6 +59,8 @@ void Graph::addEdge(std::string label1, std::string label2, unsigned long weight
     }
 }
 
+
+// Function to remove the edges between two labels
 void Graph::removeEdge(std::string label1, std::string label2) {
     if (vertices.find(label1) != vertices.end() && vertices.find(label2) != vertices.end()) {
         Vertex *v1 = vertices[label1];
@@ -60,6 +73,7 @@ void Graph::removeEdge(std::string label1, std::string label2) {
     }
 }
 
+// Function to print the graph with all the adjacent vertices and corresponding edges
 void Graph::printGraph() {
     for (const auto& pair : vertices) {
         //print the label of the current vertex
@@ -170,6 +184,7 @@ unsigned long Graph::shortestPath(std::string startLabel, std::string endLabel, 
 }
 
 
+// Print the shortest path from a source vertex to one vertex
 void Graph::printShortestPath(const std::vector<std::string>& path, unsigned long shortestDistance) {
     if (path.empty()) {
         std::cout << "No path found." << std::endl;

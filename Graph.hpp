@@ -10,7 +10,7 @@
 class Graph : GraphBase {
 public:
     Graph() {} //constructor
-    //~Graph(); //destructor
+    ~Graph(); //destructor
 
     virtual void addVertex(std::string label) override;
     virtual void removeVertex(std::string label) override;
@@ -18,7 +18,7 @@ public:
     virtual void removeEdge(std::string label1, std::string label2) override;
     virtual unsigned long shortestPath(std::string startLabel, std::string endLabel, std::vector<std::string> &path) override;
 
-    void printGraph();
+    void printGraph(); //print the vertex with their adjacency vertices and incident edges
     void printVertices(); //print all the vertices in the graph
     void printShortestPath(const std::vector<std::string>& path, unsigned long shortestDistance); //function to print the shortest path
 
